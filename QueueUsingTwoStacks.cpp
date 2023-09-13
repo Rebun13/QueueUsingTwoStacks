@@ -14,6 +14,36 @@ vector<string> split(const string &);
 * The function accepts string query and stack<int> stack as parameters.
  */
 void queueTwoStacks(string query, stack<int> &s) {
+    stack<int> copiedStack = s;
+    stack<int> reverseStack;
+    switch (query[0])
+    {
+    case '1':
+        s.push(stoi(query.substr(2, query.size() - 2)));
+        break;
+    case '2':
+        while(s.size() > 1) {
+            reverseStack.push(s.top());
+            s.pop();
+        }
+        s.pop();
+        while(!reverseStack.empty()) {
+            s.push(reverseStack.top());
+            reverseStack.pop();
+        }
+        break;
+    case '3':
+        while(copiedStack.size() > 1) {
+            copiedStack.pop();
+        }
+        cout << copiedStack.top() << endl;
+        break;
+    default:
+        break;
+    }
+}
+
+void queueTwoStacksAlt(string query, stack<int> s) {
     stack<int> reverseStack;
     switch (query[0])
     {
