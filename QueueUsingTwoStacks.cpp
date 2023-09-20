@@ -18,10 +18,10 @@ void queueTwoStacks(string query, stack<int> &s) {
     stack<int> reverseStack;
     switch (query[0])
     {
-    case '1':
+    case '1': // push
         s.push(stoi(query.substr(2, query.size() - 2)));
         break;
-    case '2':
+    case '2': // pop
         while(s.size() > 1) {
             reverseStack.push(s.top());
             s.pop();
@@ -32,7 +32,7 @@ void queueTwoStacks(string query, stack<int> &s) {
             reverseStack.pop();
         }
         break;
-    case '3':
+    case '3': // top
         while(copiedStack.size() > 1) {
             copiedStack.pop();
         }
